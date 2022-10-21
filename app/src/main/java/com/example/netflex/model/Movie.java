@@ -8,6 +8,7 @@ public class Movie implements Comparable<Movie> {
     private final int id;
     private String name;
     private String description;
+    private int poster;
     private float score;
     private float price;
     private String director;
@@ -35,6 +36,7 @@ public class Movie implements Comparable<Movie> {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", poster='" + poster + '\'' +
                 ", score=" + score +
                 ", price=" + price +
                 ", director='" + director + '\'' +
@@ -48,6 +50,7 @@ public class Movie implements Comparable<Movie> {
     public static class MovieBuilder {
         private String name;
         private String description;
+        private int poster;
         private float score;
         private float price;
         private String director;
@@ -64,6 +67,11 @@ public class Movie implements Comparable<Movie> {
 
         public MovieBuilder setDescription(String description) {
             this.description = description;
+            return this;
+        }
+
+        public MovieBuilder setPoster(int poster) {
+            this.poster = poster;
             return this;
         }
 
@@ -101,6 +109,7 @@ public class Movie implements Comparable<Movie> {
             Movie movie = new Movie();
             movie.name = this.name;
             movie.description = this.description;
+            movie.poster = this.poster;
             movie.score = this.score;
             movie.price = this.price;
             movie.director = this.director;
@@ -129,6 +138,14 @@ public class Movie implements Comparable<Movie> {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getPoster() {
+        return poster;
+    }
+
+    public void setPoster(int poster) {
+        this.poster = poster;
     }
 
     public float getScore() {

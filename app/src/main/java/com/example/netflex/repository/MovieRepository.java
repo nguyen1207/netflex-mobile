@@ -1,5 +1,6 @@
 package com.example.netflex.repository;
 
+import com.example.netflex.R;
 import com.example.netflex.model.Movie;
 
 import java.util.ArrayList;
@@ -31,6 +32,17 @@ public class MovieRepository {
                 "The Conjuring 2 is a 2016 American supernatural horror film directed by James Wan and written by Chad Hayes and Carey Hayes. A sequel to the 2013 film The Conjuring, it is the second installment in The Conjuring Universe franchise.",
                 "The Mummy is a 2017 American action-adventure film directed by Alex Kurtzman and written by Jon Spaihts and Christopher McQuarrie. It is a reboot of The Mummy franchise and the first installment in Universal Pictures' Dark Universe.",
                 "World War Z is a 2013 American apocalyptic action horror film directed by Marc Forster and written by Matthew Michael Carnahan, Drew Goddard, and Damon Lindelof, based on the 2006 novel of the same name by Max Brooks.",
+        };
+
+        int[] moviePosters = {
+                R.drawable.movie_2012,
+                R.drawable.a_ghost_story,
+                R.drawable.assassins_creed,
+                R.drawable.knowing,
+                R.drawable.a_quiet_place,
+                R.drawable.the_conjuring_2,
+                R.drawable.the_mummy,
+                R.drawable.world_war_z,
         };
 
         float[] movieScores = {
@@ -104,6 +116,7 @@ public class MovieRepository {
                     new Movie.MovieBuilder()
                             .setName(movieNames[i])
                             .setDescription(movieDescriptions[i])
+                            .setPoster(moviePosters[i])
                             .setScore(movieScores[i])
                             .setPrice(moviePrices[i])
                             .setDirector(movieDirectors[i])
