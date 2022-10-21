@@ -5,10 +5,12 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.netflex.R;
@@ -40,6 +42,15 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         holder.movieScore.setText(String.valueOf(current.getScore()));
         holder.moviePrice.setText(current.getPrice() + "$");
         holder.moviePoster.setImageResource(current.getPoster());
+
+        if(current.isFavorite()) {
+            holder.movieFavourite.setImageResource(R.drawable.heart_red);
+        } else {
+            holder.movieFavourite.setImageResource(R.drawable.heart_gradient);
+        }
+
+        ConstraintLayout parent = (ConstraintLayout) holder.moviePoster.getParent();
+        parent.setTag(current.getId());
     }
 
     @Override
@@ -54,6 +65,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         public TextView movieScore;
         public TextView moviePrice;
         public ImageView moviePoster;
+        public ImageButton movieFavourite;
 
         public MovieViewHolder(@NonNull View itemView, MovieListAdapter adapter) {
             super(itemView);
@@ -62,6 +74,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
             movieScore = itemView.findViewById(R.id.score);
             moviePrice = itemView.findViewById(R.id.price);
             moviePoster = itemView.findViewById(R.id.poster);
+            movieFavourite = itemView.findViewById(R.id.heart_icon);
             this.adapter = adapter;
 
             movieDescription.setMovementMethod(ScrollingMovementMethod.getInstance());

@@ -10,8 +10,16 @@ import java.util.stream.Collectors;
 
 public class MovieRepository {
     private final List<Movie> movies = new ArrayList<>();
+    public static MovieRepository instance;
 
-    public MovieRepository() {
+    public static MovieRepository getInstance() {
+        if (instance == null) {
+            instance = new MovieRepository();
+        }
+        return instance;
+    }
+
+    private MovieRepository() {
         String[] movieNames = {
                 "2012",
                 "A Ghost Story",
@@ -129,7 +137,6 @@ public class MovieRepository {
     }
 
     public List<Movie> getMovies() {
-        movies.forEach(System.out::println);
         return movies;
     }
 

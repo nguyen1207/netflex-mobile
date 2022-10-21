@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".FavouriteActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_list_view"
         android:layout_width="match_parent"
         android:paddingBottom="50sp"
+        android:background="#141A31"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -24,6 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+
         <ImageButton
             android:id="@+id/home_button"
             android:layout_width="0dp"
@@ -31,17 +33,17 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="home"
+            android:onClick="launchMainActivity"
             android:src="@drawable/home_icon" />
 
         <ImageButton
-            android:id="@+id/favourite_button"
+            android:id="@+id/check_favourite_button"
             android:layout_width="0dp"
             android:layout_height="50sp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:backgroundTint="@color/purple_500"
             android:contentDescription="favourites"
-            android:onClick="launchFavouriteActivity"
             android:src="@drawable/heart_gradient" />
     </LinearLayout>
 

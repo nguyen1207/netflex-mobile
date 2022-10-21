@@ -6,7 +6,7 @@ import com.example.netflex.repository.MovieRepository;
 import java.util.List;
 
 public class MovieService {
-    private final MovieRepository movieRepository = new MovieRepository();
+    private final MovieRepository movieRepository = MovieRepository.getInstance();
 
     public List<Movie> getMovies() {
         return movieRepository.getMovies();
