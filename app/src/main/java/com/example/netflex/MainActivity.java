@@ -16,6 +16,7 @@ import com.example.netflex.model.Movie;
 import com.example.netflex.service.MovieService;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private MovieService movieService = new MovieService();
