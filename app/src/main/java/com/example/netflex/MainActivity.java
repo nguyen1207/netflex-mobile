@@ -2,6 +2,8 @@ package com.example.netflex;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import com.example.netflex.adapter.MovieListAdapter;
 import com.example.netflex.model.Movie;
 import com.example.netflex.service.MovieService;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private MovieService movieService = new MovieService();
     private RecyclerView movieListView;
     private MovieListAdapter movieListAdapter;
+    private List<Movie> movies;
+    private Menu optionsMenu;
     public static final String MOVIE_ID = "com.example.netflex.MOVIE_ID";
 
     @Override
@@ -29,10 +34,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        movies = movieService.getMovies();
         movieListView = findViewById(R.id.movie_list_view);
-        movieListAdapter = new MovieListAdapter(this, movieService.getMovies());
+        movieListAdapter = new MovieListAdapter(this, movies);
         movieListView.setAdapter(movieListAdapter);
         movieListView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        optionsMenu = menu;
+        return true;
     }
 
     public void launchFavouriteActivity(View view) {
@@ -62,5 +75,23 @@ public class MainActivity extends AppCompatActivity {
             ((ImageButton) view).setImageResource(R.drawable.heart_red);
             Toast.makeText(this, "Added to favourites", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void sortMoviesDescByScore(MenuItem item) {
+        movies.sort(Collections.reverseOrder());
+        movieListAdapter.notifyDataSetChanged();
+
+        item.setVisible(false);
+        MenuItem sortAscBtn = optionsMenu.getItem(1);
+        sortAscBtn.setVisible(true);
+    }
+
+    public void sortMoviesAscByScore(MenuItem item) {
+        Collections.sort(movies);
+        movieListAdapter.notifyDataSetChanged();
+
+        item.setVisible(false);
+        MenuItem sortDescBtn = optionsMenu.getItem(0);
+        sortDescBtn.setVisible(true);
     }
 }
