@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_sort_desc"
+        android:icon="@drawable/sort_desc_icon"
+        android:title="Sort desc"
+        android:onClick="sortMoviesDescByScore"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_sort_asc"
+        android:icon="@drawable/sort_asc_icon"
+        android:visible="false"
+        android:title="Sort asc"
+        android:onClick="sortMoviesAscByScore"
+        app:showAsAction="ifRoom"/>
+
+</menu>
