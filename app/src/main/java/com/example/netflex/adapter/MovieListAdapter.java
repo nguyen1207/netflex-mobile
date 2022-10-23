@@ -54,6 +54,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
                 if(isLongClick){
                     Intent intent = new Intent(context, MovieItemActivity.class);
                     intent.putExtra("movie_name", movies.get(position).getName());
+                    intent.putExtra("movie_poster", movies.get(position).getPoster());
                     intent.putExtra("movie_rating", movies.get(position).getScore());
                     intent.putExtra("movie_director", movies.get(position).getDirector());
                     intent.putExtra("movie_date", movies.get(position).getReleaseDate());
