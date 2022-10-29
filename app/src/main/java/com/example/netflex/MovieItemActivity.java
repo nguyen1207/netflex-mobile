@@ -42,14 +42,15 @@ public class MovieItemActivity extends AppCompatActivity{
     private Button btnBookingCGV;
     private Button btnBookingBHD;
     private Button btnTrailer;
-    SimpleDateFormat sdf;
-    private MovieService movieService = new MovieService();
+    private SimpleDateFormat sdf;
+    private final MovieService movieService = new MovieService();
 
     @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_item);
+
         setupView();
         setupViewInfo();
     }
@@ -71,6 +72,7 @@ public class MovieItemActivity extends AppCompatActivity{
 
     public void setupViewInfo(){
         Intent intent = getIntent();
+
         Date date = (Date) intent.getSerializableExtra("movie_date");
         sdf = new SimpleDateFormat("MM/dd/yy");
         String strDate = sdf.format(date);
